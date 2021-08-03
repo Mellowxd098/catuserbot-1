@@ -39,21 +39,21 @@ def get_key(val):
 
 
 @catub.cat_cmd(
-    pattern="pcode(?:\s|$)([\s\S]*)",
-    command=("pcode", plugin_category),
+    pattern="fti(?:\s|$)([\s\S]*)",
+    command=("fti", plugin_category),
     info={
         "header": "Will paste the entire text on the blank white image.",
         "flags": {
             "f": "Use this flag to send it as file rather than image",
         },
-        "usage": ["{tr}pcode <reply>", "{tr}pcode text"],
+        "usage": ["{tr}fti <reply>", "{tr}pcode text"],
     },
 )
 async def paste_img(event):
     "To paste text to image."
     reply_to = await reply_id(event)
     d_file_name = None
-    catevent = await edit_or_reply(event, "`Pasting the text on image`")
+    catevent = await edit_or_reply(event, "`Converting the file to image`")
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
     ext = re.findall(r"-f", input_str)
